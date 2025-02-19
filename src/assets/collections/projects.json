@@ -1,9 +1,10 @@
 [
   {
-    "name": "GotoSend",
+    "name": "Potluck",
     "description": "E-commerce for selling remittances, mobile recharges and gift cards.",
     "urlImg": "/projects/gotosend.webp",
-    "link": "https://gotosend.com"
+    "link": "https://gotosend.com",
+    "github": "https://github.com/TimB808/potluck_project"
   },
   {
     "name": "D-Kanto",

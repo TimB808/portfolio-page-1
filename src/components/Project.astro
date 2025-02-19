@@ -6,23 +6,18 @@ interface Project {
   description: string;
   urlImg: string;
   link: string;
+  github?: string;
 }
 
 interface Props {
   project: Project;
 }
 
-const { name, description, urlImg, link } = Astro.props.project;
+const { name, description, urlImg, link, github } = Astro.props.project;
 ---
 
-<a
-  href={link}
-  target="_blank"
-  class="relative flex flex-col items-stretch duration-300 ease-out p-3 group h-fit rounded-md bg-white dark:bg-gray-950/30 w-full lg:max-w-82"
->
-  <span
-    class="absolute inset-0 z-20 block size-full duration-300 ease-out bg-transparent border border-transparent group-hover:-translate-x-1 group-hover:-translate-y-1 group-hover:border group-hover:border-gray-300 dark:group-hover:border-neutral-800 rounded-md group-hover:bg-white dark:group-hover:bg-gray-950/30"
-  ></span>
+<div class="relative flex flex-col items-stretch duration-300 ease-out p-3 group h-fit rounded-md bg-white dark:bg-gray-950/30 w-full lg:max-w-82">  {/* Changed to a <div> */}
+  <a href={link} target="_blank" class="absolute inset-0 z-20 block size-full duration-300 ease-out bg-transparent border border-transparent group-hover:-translate-x-1 group-hover:-translate-y-1 group-hover:border group-hover:border-gray-300 dark:group-hover:border-neutral-800 rounded-md group-hover:bg-white dark:group-hover:bg-gray-950/30"></a>
   <span
     class="absolute inset-0 z-10 block w-full h-full duration-300 ease-out border rounded-md border-gray-300 dark:border-neutral-800 group-hover:translate-x-1 group-hover:translate-y-1"
   ></span>
@@ -50,36 +45,42 @@ const { name, description, urlImg, link } = Astro.props.project;
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
-          ><g
-            stroke="none"
-            stroke-width="1"
-            fill="none"
-            fill-rule="evenodd"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            ><g
-              id="svg"
-              transform="translate(0.666667, 2.333333)"
-              stroke="currentColor"
-              stroke-width="2.4"
-              ><g
-                ><polyline
-                  class="transition-all duration-200 ease-out opacity-0 delay-0 group-hover:opacity-100"
-                  points="5.33333333 0 10.8333333 5.5 5.33333333 11"
-                ></polyline><line
-                  class="transition-all duration-200 ease-out transform -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 group-hover:ml-0"
-                  x1="10.8333333"
-                  y1="5.5"
-                  x2="0.833333333"
-                  y2="5.16666667"></line></g
-              ></g
-            ></g
-          ></svg
-        >
+        ><g
+          stroke="none"
+          stroke-width="1"
+          fill="none"
+          fill-rule="evenodd"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ><g
+          id="svg"
+          transform="translate(0.666667, 2.333333)"
+          stroke="currentColor"
+          stroke-width="2.4"
+        ><g
+          ><polyline
+            class="transition-all duration-200 ease-out opacity-0 delay-0 group-hover:opacity-100"
+            points="5.33333333 0 10.8333333 5.5 5.33333333 11"
+          ></polyline><line
+            class="transition-all duration-200 ease-out transform -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 group-hover:ml-0"
+            x1="10.8333333"
+            y1="5.5"
+            x2="0.833333333"
+            y2="5.16666667"></line></g
+        ></g
+        ></g
+        ></svg>
       </span>
       <span class="text-sm text-gray-600 dark:text-gray-400 block truncate"
         >{description}</span
       >
+
+      {github && (
+        <a href={github} target="_blank" class="text-sm text-blue-600 dark:text-blue-400 hover:underline mt-2 inline-block"> {/* Added inline-block */}
+          Link to my GitHub repo
+        </a>
+      )}
+
     </span>
   </span>
-</a>
+</div>
